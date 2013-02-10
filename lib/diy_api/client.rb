@@ -23,13 +23,13 @@ module DIY
     def projects(options={})
       options[:limit] ||= 100
       options[:offset] ||= 0
-      get("/projects?limit=#{options[:limit]}&offset=#{options[:offset]}")
+      get("/projects", options)
     end
 
     def explore(options={})
       options[:limit] ||= 100
       options[:offset] ||= 0
-      get("/explore?limit=#{options[:limit]}&offset=#{options[:offset]}")
+      get("/explore", options)
     end
 
     def maker(id)
@@ -54,8 +54,11 @@ module DIY
 
     private
 
-    def get(path)
-      @conn.get(path).body.response
+    def get(path, params={})
+      faraday_response = @conn.get(path) do |request|
+        request.params.update(params)
+      end
+      faraday_response.body.response
     end
 
   end
