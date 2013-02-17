@@ -16,8 +16,10 @@ module DIY
       end
     end
 
-    def skills
-      get("/skills")
+    def skills(options={})
+      options[:limit] ||= 100
+      options[:offset] ||= 0
+      get("/skills", options)
     end
 
     def projects(options={})
@@ -26,10 +28,10 @@ module DIY
       get("/projects", options)
     end
 
-    def explore(options={})
+    def tools(options={})
       options[:limit] ||= 100
       options[:offset] ||= 0
-      get("/explore", options)
+      get("/tools", options)
     end
 
     def maker(id)
@@ -42,10 +44,6 @@ module DIY
 
     def skill(id)
       get("/skills/#{id}")
-    end
-
-    def stream(id)
-      get("/makers/#{id}/stream")
     end
 
     def tool(id)
