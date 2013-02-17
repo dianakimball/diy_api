@@ -16,10 +16,44 @@ module DIY
       end
     end
 
-    def skills(options={})
-      options[:limit] ||= 100
-      options[:offset] ||= 0
-      get("/skills", options)
+    def maker(id)
+      get("/makers/#{id}")
+    end
+
+    def stream_of_maker(id)
+      get("/makers/#{id}/stream")
+    end
+
+    def following_stream_of_maker(id)
+      get("/makers/#{id}/following/stream")
+    end
+
+    def projects_by_maker(id)
+      get("/makers/#{id}/projects")
+    end
+
+    def achievements_by_maker(id)
+      get("/makers/#{id}/achievements")
+    end
+
+    def favorites_of_maker(id)
+      get("/makers/#{id}/favorites")
+    end
+
+    def followers_of_maker(id)
+      get("/makers/#{id}/followers")
+    end
+
+    def follows_of_maker(id)
+      get("/makers/#{id}/following")
+    end
+
+    def project(id)
+      get("/projects/#{id}")
+    end
+
+    def comments_on_project(id)
+      get("/projects/#{id}/comments")
     end
 
     def projects(options={})
@@ -28,26 +62,28 @@ module DIY
       get("/projects", options)
     end
 
-    def tools(options={})
-      options[:limit] ||= 100
-      options[:offset] ||= 0
-      get("/tools", options)
-    end
-
-    def maker(id)
-      get("/makers/#{id}")
-    end
-
-    def project(id)
-      get("/projects/#{id}")
-    end
-
     def skill(id)
       get("/skills/#{id}")
     end
 
+    def challenges_for_skill(id)
+      get("/skills/#{id}/challenges")
+    end
+
+    def skills(options={})
+      options[:limit] ||= 100
+      options[:offset] ||= 0
+      get("/skills", options)
+    end
+
     def tool(id)
       get("/tools/#{id}")
+    end
+
+    def tools(options={})
+      options[:limit] ||= 100
+      options[:offset] ||= 0
+      get("/tools", options)
     end
 
     private
