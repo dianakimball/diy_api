@@ -44,7 +44,7 @@ Limits and pagination are currently available on the following methods: `project
 
 #### Fetch a Stream (by Maker ID)
 
-The DIY API allows for grabbing a stream of "activity related to a given maker" _or_ "followed makers' activity." In short, stuff related to a maker or stuff related to the makers that a given maker follows." In this gem, we'll call "stuff related to a maker" the "action stream" and "stuff related to the makers that a given maker follows" the "activity stream."
+The DIY API allows for grabbing a stream of "activity related to a given maker" _or_ "followed makers' activity." In this gem, we'll call "stuff related to a maker" the "action stream" and "stuff related to the makers that a given maker follows" the "activity stream."
 
     client.action_stream(37614) # returns activity related to maker 37614
     client.activity_stream(37614) # returns activity related to the makers that maker 37614 follows
