@@ -22,7 +22,7 @@ A Ruby interface to the DIY.org API. According to the ["About" page](https://diy
 
 ## Configuration
 
-All requests require an API key; you can [request a key](http://friends.diy.org/developers) as described in [Setup](http://github.com/dianakimball/diy_api#setup). Once you have a key in hand, you can configure an API client in a single line:
+All requests require an API key; you can [request a key](http://friends.diy.org/developers) from DIY. Once you have a key in hand, you can configure an API client in a single line:
 
     client = DIY::Client.new('your-api-key')
 
