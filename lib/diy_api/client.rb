@@ -10,7 +10,7 @@ module DIY
       @api_key = api_key
       @conn = Faraday.new(:url => BASE_URL) do |builder|
         builder.headers = {'x-diy-api-key' => @api_key, 'Accept-Version' => '~1.4'}
-        builder.use Faraday::Response::Rashify
+        builder.use Faraday::Response::Mashify
         builder.use Faraday::Response::ParseJson
         builder.adapter Faraday.default_adapter
       end
@@ -20,11 +20,11 @@ module DIY
       get("/makers/#{id}")
     end
 
-    def stream_of_maker(id)
+    def action_stream(id)
       get("/makers/#{id}/stream")
     end
 
-    def following_stream_of_maker(id)
+    def activity_stream(id)
       get("/makers/#{id}/following/stream")
     end
 
