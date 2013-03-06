@@ -87,6 +87,12 @@ module DIY
       get("/tools", options)
     end
 
+    def explore(options={})
+      options[:limit] ||= 100
+      options[:offset] ||= 0
+      get("/explore", options)
+    end
+
     private
 
     def get(path, params={})
