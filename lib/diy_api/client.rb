@@ -6,10 +6,11 @@ BASE_URL = 'https://api.diy.org'
 
 module DIY
   class Client
-    def initialize(api_key)
+    def initialize(api_key, api_version = '~1.4')
       @api_key = api_key
+      @api_version = api_version
       @conn = Faraday.new(:url => BASE_URL) do |builder|
-        builder.headers = {'x-diy-api-key' => @api_key, 'Accept-Version' => '~1.4'}
+        builder.headers = {'x-diy-api-key' => @api_key, 'Accept-Version' => @api_version}
         builder.use Faraday::Response::Mashify
         builder.use Faraday::Response::ParseJson
         builder.adapter Faraday.default_adapter
