@@ -6,11 +6,14 @@ BASE_URL = 'https://api.diy.org'
 
 module DIY
   class Client
-    def initialize(api_key, api_version = '~1.4')
+    def initialize(api_key, username = nil, password = nil, api_version = '~1.4')
       @api_key = api_key
+      @username = username
+      @password = password
       @api_version = api_version
       @conn = Faraday.new(:url => BASE_URL) do |builder|
         builder.headers = {'x-diy-api-key' => @api_key, 'Accept-Version' => @api_version}
+        builder.basic_auth(@username, @password) if credentials?
         builder.use Faraday::Response::Mashify
         builder.use Faraday::Response::ParseJson
         builder.adapter Faraday.default_adapter
@@ -93,7 +96,7 @@ module DIY
       get("/explore", options)
     end
 
-    private
+  private
 
     def get(path, params={})
       faraday_response = @conn.get(path) do |request|
@@ -102,5 +105,8 @@ module DIY
       faraday_response.body.response
     end
 
+    def credentials?
+      @username && @password
+    end
   end
 end
