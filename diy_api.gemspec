@@ -7,6 +7,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency "faraday"
   gem.add_dependency "faraday_middleware"
   gem.add_dependency "rash"
+  gem.add_development_dependency "rspec"
+  gem.add_development_dependency "webmock"
+  gem.add_development_dependency "simplecov"
   gem.name          = "diy_api"
   gem.version       = DiyApi::VERSION
   gem.authors       = ["Diana Kimball"]
