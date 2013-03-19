@@ -1,11 +1,10 @@
 require 'faraday'
-require 'faraday_middleware/response/rashify'
+require 'faraday_middleware/response/mashify'
 require 'faraday_middleware/response/parse_json'
-
-BASE_URL = 'https://api.diy.org'
 
 module DIY
   class Client
+    BASE_URL = 'https://api.diy.org'
     def initialize(api_key, username = nil, password = nil, api_version = '~1.4')
       @api_key = api_key
       @username = username

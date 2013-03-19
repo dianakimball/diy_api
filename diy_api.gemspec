@@ -6,7 +6,7 @@ require 'diy_api/version'
 Gem::Specification.new do |gem|
   gem.add_dependency "faraday"
   gem.add_dependency "faraday_middleware"
-  gem.add_dependency "rash"
+  gem.add_dependency "hashie"
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "webmock"
   gem.add_development_dependency "simplecov"
